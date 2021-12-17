@@ -3,7 +3,7 @@ import Foundation
 struct Breed : Decodable {
     let name : String?
     let description: String?
-    let wikipediaUrl: String?
+    let wikipedia_url: String?
 }
 
 struct Cat : Decodable, Identifiable {

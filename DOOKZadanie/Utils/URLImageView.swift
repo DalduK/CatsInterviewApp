@@ -8,8 +8,6 @@ struct URLImageView: View {
     var body: some View {
         Image(uiImage: image)
             .resizable()
-            .aspectRatio(contentMode: .fit)
-            .cornerRadius(5)
             .onReceive(imageLoader.$image) { image in
                 self.image = image
             }

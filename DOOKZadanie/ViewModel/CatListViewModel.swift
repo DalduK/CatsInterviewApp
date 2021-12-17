@@ -37,7 +37,7 @@ final public class CatListViewModel : ObservableObject {
                     else {
                         if let name = cat.breeds[0]?.name,
                            let desc = cat.breeds[0]?.description,
-                           let wikiUrl = cat.breeds[0]?.wikipediaUrl {
+                           let wikiUrl = cat.breeds[0]?.wikipedia_url {
                             strongSelf.catsList.append(CatInfo(url: cat.url, name: name, description: desc, wikiUrl: wikiUrl))
                         } else {
                             //Somtimes there was a problem that there is no wikiURL inside

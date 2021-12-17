@@ -8,6 +8,8 @@ struct CatListView: View {
             List(viewModel.catsList){ cat in
                 VStack{
                     URLImageView(urlString: cat.url)
+                    .aspectRatio(contentMode: .fit)
+                        .cornerRadius(5)
                     if cat.name != "" {
                         Text(cat.name)
                     }
