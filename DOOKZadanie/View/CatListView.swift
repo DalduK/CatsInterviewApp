@@ -5,29 +5,30 @@ struct CatListView: View {
     
     var body: some View {
         NavigationView{
-            VStack{
-                Button("Refresh", action: {
+            List(viewModel.catsList){ cat in
+                VStack{
+                    URLImageView(urlString: cat.url)
+                    if cat.name != "" {
+                        Text(cat.name)
+                    }
+                }.padding()
+                    .onTapGesture {
+                        viewModel.selectedCat = cat
+                        viewModel.timer.invalidate()
+                    }
+            }.toolbar(content: {
+                Button{
                     DispatchQueue.main.async {
                         self.viewModel.getCatsData()
                     }
-                })
-                List(viewModel.catsList){ cat in
-                    VStack{
-                        
-                        URLImageView(urlString: cat.url)
-                        if cat.name != "" {
-                            Text(cat.name)
-                        }
-                    }.padding()
-                        .onTapGesture {
-                            viewModel.selectedCat = cat
-                            viewModel.timer.invalidate()
-                        }
+                } label: {
+                    Image(systemName: "arrow.clockwise")
                 }
-            }.sheet(item: $viewModel.selectedCat, onDismiss: viewModel.countTime){cat in
+            }).sheet(item: $viewModel.selectedCat, onDismiss: viewModel.countTime){cat in
                 CatDetailView(name: cat.name, picURL: cat.url, wikipediaURL: cat.wikiUrl, description: cat.description)
             }.navigationTitle("Cats")
-        }
+            
+        }.navigationViewStyle(.stack)
     }
 }
 
