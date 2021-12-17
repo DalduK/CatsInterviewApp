@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  DOOKZadanie
-//
-//  Created by Przemysław Woźny on 16/12/2021.
-//
-
 import SwiftUI
 
 struct CatListView: View {
@@ -18,24 +11,22 @@ struct CatListView: View {
                         self.viewModel.getCatsData()
                     }
                 })
-            List{
-                ForEach(0..<viewModel.catsList.count, id:\.self){ cat in
+                List(viewModel.catsList){ cat in
                     VStack{
-                        if viewModel.catsList[cat].name != ""{
-                            URLImageView(urlString: viewModel.catsList[cat].url).padding()
-                            Text(viewModel.catsList[cat].name)
-                        }else{
-                            URLImageView(urlString: viewModel.catsList[cat].url)
+                        
+                        URLImageView(urlString: cat.url)
+                        if cat.name != "" {
+                            Text(cat.name)
                         }
-                    }.onTapGesture {
-                        viewModel.selectedCat = cat
-                        viewModel.timer.invalidate()
-                    }
+                    }.padding()
+                        .onTapGesture {
+                            viewModel.selectedCat = cat
+                            viewModel.timer.invalidate()
+                        }
                 }
-            }.sheet(item: $viewModel.selectedCat){i in
-                CatDetailView(name: viewModel.catsList[i].name, picURL: viewModel.catsList[i].url, wikipedia_URL: viewModel.catsList[i].wiki_url, description: viewModel.catsList[i].description)
+            }.sheet(item: $viewModel.selectedCat, onDismiss: viewModel.countTime){cat in
+                CatDetailView(name: cat.name, picURL: cat.url, wikipediaURL: cat.wikiUrl, description: cat.description)
             }.navigationTitle("Cats")
-            }
         }
     }
 }

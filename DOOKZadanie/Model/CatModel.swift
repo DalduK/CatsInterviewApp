@@ -1,16 +1,9 @@
-//
-//  CatModel.swift
-//  DOOKZadanie
-//
-//  Created by Przemysław Woźny on 16/12/2021.
-//
-
 import Foundation
 
 struct Breed : Decodable {
     let name : String?
     let description: String?
-    let wikipedia_url: String?
+    let wikipediaUrl: String?
 }
 
 struct Cat : Decodable, Identifiable {
@@ -26,5 +19,20 @@ struct CatInfo: Identifiable{
     let url: String
     let name: String
     let description: String
-    let wiki_url: String
+    let wikiUrl: String
+    init(url: String) {
+        self.id = UUID()
+        self.url = url
+        self.name = ""
+        self.description = ""
+        self.wikiUrl = ""
+    }
+    
+    init(url: String, name: String, description: String, wikiUrl: String) {
+        self.id = UUID()
+        self.url = url
+        self.name = name
+        self.description = description
+        self.wikiUrl = wikiUrl
+    }
 }
