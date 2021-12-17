@@ -8,29 +8,30 @@
 import SwiftUI
 
 struct CatListView: View {
-    
     @StateObject private var viewModel = CatListViewModel()
     
     var body: some View {
         NavigationView{
             VStack{
                 Button("Refresh", action: {
-                    self.viewModel.getCatsData()
+                    DispatchQueue.main.async {
+                        self.viewModel.getCatsData()
+                    }
                 })
             List{
-                ForEach(viewModel.catsList){ cat in
+                ForEach(0..<viewModel.catsList.count, id:\.self){ cat in
                     VStack{
-                        URLImageView(urlString: cat.url)
-                        Text(cat.name ?? "")
-                    }.sheet(isPresented: $viewModel.isPresented){
-                        CatDetailView()
+                        URLImageView(urlString: viewModel.catsList[cat].url)
+                        Text(viewModel.catsList[cat].name ?? "")
                     }.onTapGesture {
-                        viewModel.isPresented = true
+                        viewModel.selectedCat = cat
                     }
                 }
+            }.sheet(item: $viewModel.selectedCat){i in
+                CatDetailView(name: viewModel.catsList[i].name ?? "", picURL: viewModel.catsList[i].url, wikipedia_URL: viewModel.catsList[i].wiki_url ?? "", description: viewModel.catsList[i].description ?? "")
             }.navigationTitle("Cats")
             }
-        }.onAppear(perform: viewModel.getCatsData)
+        }
     }
 }
 
@@ -38,4 +39,8 @@ struct CatListView_Previews: PreviewProvider {
     static var previews: some View {
         CatListView()
     }
+}
+
+extension Int: Identifiable {
+    public var id: Int { self }
 }

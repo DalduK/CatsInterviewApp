@@ -20,7 +20,6 @@
 		FBB67C40276BD15700846E6A /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C3F276BD15700846E6A /* URLImageView.swift */; };
 		FBB67C42276BD22A00846E6A /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C41276BD22A00846E6A /* ImageLoaderService.swift */; };
 		FBB67C44276BDD2700846E6A /* CatDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C43276BDD2700846E6A /* CatDetailView.swift */; };
-		FBB67C46276BDD3E00846E6A /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C45276BDD3E00846E6A /* CatDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +56,6 @@
 		FBB67C3F276BD15700846E6A /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		FBB67C41276BD22A00846E6A /* ImageLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderService.swift; sourceTree = "<group>"; };
 		FBB67C43276BDD2700846E6A /* CatDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailView.swift; sourceTree = "<group>"; };
-		FBB67C45276BDD3E00846E6A /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,7 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				FBB67C33276B939200846E6A /* CatListViewModel.swift */,
-				FBB67C45276BDD3E00846E6A /* CatDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -314,7 +311,6 @@
 				FBB67C08276B931700846E6A /* CatListView.swift in Sources */,
 				FBB67C06276B931700846E6A /* DOOKZadanieApp.swift in Sources */,
 				FBB67C38276B961300846E6A /* NetworkUtils.swift in Sources */,
-				FBB67C46276BDD3E00846E6A /* CatDetailViewModel.swift in Sources */,
 				FBB67C44276BDD2700846E6A /* CatDetailView.swift in Sources */,
 				FBB67C36276B94A200846E6A /* CatModel.swift in Sources */,
 				FBB67C42276BD22A00846E6A /* ImageLoaderService.swift in Sources */,
