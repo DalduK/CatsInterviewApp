@@ -21,14 +21,19 @@ struct CatListView: View {
             List{
                 ForEach(0..<viewModel.catsList.count, id:\.self){ cat in
                     VStack{
-                        URLImageView(urlString: viewModel.catsList[cat].url)
-                        Text(viewModel.catsList[cat].name ?? "")
+                        if viewModel.catsList[cat].name != ""{
+                            URLImageView(urlString: viewModel.catsList[cat].url).padding()
+                            Text(viewModel.catsList[cat].name)
+                        }else{
+                            URLImageView(urlString: viewModel.catsList[cat].url)
+                        }
                     }.onTapGesture {
                         viewModel.selectedCat = cat
+                        viewModel.timer.invalidate()
                     }
                 }
             }.sheet(item: $viewModel.selectedCat){i in
-                CatDetailView(name: viewModel.catsList[i].name ?? "", picURL: viewModel.catsList[i].url, wikipedia_URL: viewModel.catsList[i].wiki_url ?? "", description: viewModel.catsList[i].description ?? "")
+                CatDetailView(name: viewModel.catsList[i].name, picURL: viewModel.catsList[i].url, wikipedia_URL: viewModel.catsList[i].wiki_url, description: viewModel.catsList[i].description)
             }.navigationTitle("Cats")
             }
         }

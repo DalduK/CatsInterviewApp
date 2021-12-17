@@ -24,7 +24,7 @@ struct Cat : Decodable, Identifiable {
 struct CatInfo: Identifiable{
     let id: UUID
     let url: String
-    let name: String?
-    let description: String?
-    let wiki_url: String?
+    let name: String
+    let description: String
+    let wiki_url: String
 }

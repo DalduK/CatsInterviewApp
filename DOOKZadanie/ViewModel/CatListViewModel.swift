@@ -8,14 +8,17 @@
 import Foundation
 import SwiftUI
 
-final public class CatListViewModel :ObservableObject {
-    @Published var catsList : [CatInfo]
+final public class CatListViewModel : ObservableObject {
+    @Published var catsList : [CatInfo] = []
     @Published var selectedCat : Int? = nil
     @Published var isPresented : Bool = false
+    @Published var timer = Timer()
     
     init() {
-        self.catsList = []
         self.getCatsData()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 20, repeats: true, block: { _ in
+            self.getCatsData()
+        })
     }
     
     func getCatsData(){
@@ -25,13 +28,16 @@ final public class CatListViewModel :ObservableObject {
             }
             strongSelf.catsList.removeAll()
             for cat in cats {
-                if !cat.breeds.isEmpty{
-                    DispatchQueue.main.async {
-                        strongSelf.catsList.append(CatInfo(id: UUID(), url: cat.url, name: cat.breeds[0]?.name ?? "", description: cat.breeds[0]?.description ?? "", wiki_url: cat.breeds[0]?.wikipedia_url))
-                    }
-                } else{
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    if cat.breeds.isEmpty{
                         strongSelf.catsList.append(CatInfo(id: UUID(), url: cat.url, name: "", description: "", wiki_url: ""))
+                    }
+                    else{
+                        if let name = cat.breeds[0]?.name,
+                           let desc = cat.breeds[0]?.description,
+                           let wiki_url = cat.breeds[0]?.wikipedia_url{
+                            strongSelf.catsList.append(CatInfo(id: UUID(), url: cat.url, name: name, description: desc, wiki_url: wiki_url))
+                        }
                     }
                 }
             }
