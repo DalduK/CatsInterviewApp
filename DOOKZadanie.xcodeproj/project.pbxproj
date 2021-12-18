@@ -13,7 +13,6 @@
 		FBB67C0D276B931900846E6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBB67C0C276B931900846E6A /* Preview Assets.xcassets */; };
 		FBB67C17276B931A00846E6A /* DOOKZadanieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C16276B931A00846E6A /* DOOKZadanieTests.swift */; };
 		FBB67C21276B931A00846E6A /* DOOKZadanieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C20276B931A00846E6A /* DOOKZadanieUITests.swift */; };
-		FBB67C23276B931A00846E6A /* DOOKZadanieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C22276B931A00846E6A /* DOOKZadanieUITestsLaunchTests.swift */; };
 		FBB67C34276B939200846E6A /* CatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C33276B939200846E6A /* CatListViewModel.swift */; };
 		FBB67C36276B94A200846E6A /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C35276B94A200846E6A /* CatModel.swift */; };
 		FBB67C38276B961300846E6A /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB67C37276B961300846E6A /* NetworkUtils.swift */; };
@@ -49,7 +48,6 @@
 		FBB67C16276B931A00846E6A /* DOOKZadanieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOOKZadanieTests.swift; sourceTree = "<group>"; };
 		FBB67C1C276B931A00846E6A /* DOOKZadanieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DOOKZadanieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBB67C20276B931A00846E6A /* DOOKZadanieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOOKZadanieUITests.swift; sourceTree = "<group>"; };
-		FBB67C22276B931A00846E6A /* DOOKZadanieUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DOOKZadanieUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		FBB67C33276B939200846E6A /* CatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatListViewModel.swift; sourceTree = "<group>"; };
 		FBB67C35276B94A200846E6A /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
 		FBB67C37276B961300846E6A /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				FBB67C20276B931A00846E6A /* DOOKZadanieUITests.swift */,
-				FBB67C22276B931A00846E6A /* DOOKZadanieUITestsLaunchTests.swift */,
 			);
 			path = DOOKZadanieUITests;
 			sourceTree = "<group>";
@@ -330,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FBB67C23276B931A00846E6A /* DOOKZadanieUITestsLaunchTests.swift in Sources */,
 				FBB67C21276B931A00846E6A /* DOOKZadanieUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

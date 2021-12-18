@@ -22,11 +22,11 @@ struct CatDetailView: View {
         VStack {
             Button("Close") {
                 self.presentationMode.wrappedValue.dismiss()
-            }.padding(.top)
+            }.padding(.top).accessibilityLabel("DismissModal")
             Spacer()
             VStack{
                 URLImageView(urlString: picURL)
-                    .aspectRatio(contentMode: .fit)
+                    .aspectRatio(contentMode: .fit).accessibilityLabel("ProgressOrImageSheet")
                 HStack{
                     VStack(alignment: .leading){
                         if name != "" {

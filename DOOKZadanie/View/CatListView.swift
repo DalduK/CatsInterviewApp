@@ -18,7 +18,7 @@ struct CatListView: View {
                         viewModel.selectedCat = cat
                         viewModel.timer.invalidate()
                     }
-            }.toolbar(content: {
+            }.accessibilityLabel("List").toolbar(content: {
                 Button{
                     DispatchQueue.main.async {
                         self.viewModel.getCatsData()
@@ -26,7 +26,7 @@ struct CatListView: View {
                     }
                 } label: {
                     Image(systemName: "arrow.clockwise")
-                }
+                }.accessibilityIdentifier("refreshButton")
             }).sheet(item: $viewModel.selectedCat, onDismiss: viewModel.countTime){cat in
                 CatDetailView(name: cat.name, picURL: cat.url, wikipediaURL: cat.wikiUrl, description: cat.description)
             }.navigationTitle("Cats")

@@ -9,7 +9,7 @@ struct URLImageView: View {
     var body: some View {
         ZStack{
             if loaded == false {
-                ProgressView().scaleEffect(1.5)
+                ProgressView().accessibilityIdentifier("progress").scaleEffect(1.5)
             }
                 
             Image(uiImage: image)
@@ -17,6 +17,7 @@ struct URLImageView: View {
                 .onReceive(imageLoader.$image) { image in
                     self.image = image
                 }
+                .accessibilityLabel("CatImage")
         }
             .onAppear {
                 imageLoader.loadImage(urlString: urlString){ loaded in
