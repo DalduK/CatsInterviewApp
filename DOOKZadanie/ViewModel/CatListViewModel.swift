@@ -6,6 +6,7 @@ final public class CatListViewModel : ObservableObject {
     @Published var selectedCat : CatInfo? = nil
     @Published var isPresented : Bool = false
     @Published var timer = Timer()
+    @Published var apiError : Bool = false
     var timePassed = 20
     
     init() {
@@ -27,6 +28,12 @@ final public class CatListViewModel : ObservableObject {
         getCats{[weak self] cats in
             guard let strongSelf = self else {
                 return
+            }
+            if cats.isEmpty{
+                DispatchQueue.main.async {
+                    strongSelf.apiError = true
+                    return
+                }
             }
             DispatchQueue.main.async {
                 strongSelf.catsList.removeAll()

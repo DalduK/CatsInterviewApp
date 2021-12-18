@@ -31,7 +31,10 @@ struct CatListView: View {
                 CatDetailView(name: cat.name, picURL: cat.url, wikipediaURL: cat.wikiUrl, description: cat.description)
             }.navigationTitle("Cats")
             
-        }.navigationViewStyle(.stack)
+        }.navigationViewStyle(.stack).alert(isPresented: $viewModel.apiError) {
+            Alert(title: Text("App Error occured"), message: Text("There is a problem with internet connection or API is unreachable, please try again later."), dismissButton: .cancel(Text("Got it!")))
+        }
+
     }
 }
 

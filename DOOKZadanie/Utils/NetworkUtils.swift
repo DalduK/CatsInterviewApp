@@ -7,6 +7,7 @@ func getCats(completionHandler: @escaping ([Cat]) -> Void) {
     let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, _, error) in
         if let error = error {
             print("Error with fetching cats: \(error)")
+            completionHandler([])
             return
         }
         
