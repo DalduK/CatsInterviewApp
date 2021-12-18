@@ -7,11 +7,11 @@ struct URLImageView: View {
     @State var image: UIImage = UIImage()
     @State var loaded: Bool = false
     var body: some View {
-        ZStack{
+        ZStack {
             if loaded == false {
                 ProgressView().accessibilityIdentifier("progress").scaleEffect(1.5)
             }
-                
+            
             Image(uiImage: image)
                 .resizable()
                 .onReceive(imageLoader.$image) { image in
@@ -19,10 +19,10 @@ struct URLImageView: View {
                 }
                 .accessibilityLabel("CatImage")
         }
-            .onAppear {
-                imageLoader.loadImage(urlString: urlString){ loaded in
-                    self.loaded = loaded
-                }
+        .onAppear {
+            imageLoader.loadImage(urlString: urlString) { loaded in
+                self.loaded = loaded
             }
+        }
     }
 }

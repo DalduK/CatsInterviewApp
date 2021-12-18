@@ -13,7 +13,7 @@ struct CatDetailView: View {
         self.wikipediaURL = wikipediaURL
         if description.isEmpty {
             self.description = "Cat has no name, neither description 😿"
-        }else{
+        } else {
             self.description = description
         }
     }
@@ -27,8 +27,8 @@ struct CatDetailView: View {
             VStack{
                 URLImageView(urlString: picURL)
                     .aspectRatio(contentMode: .fit).accessibilityLabel("ProgressOrImageSheet")
-                HStack{
-                    VStack(alignment: .leading){
+                HStack {
+                    VStack(alignment: .leading) {
                         if name != "" {
                             Text(name)
                                 .font(.title)
@@ -48,14 +48,12 @@ struct CatDetailView: View {
                                 
                             })
                         }
-                        
                     }
                 }.padding()
             }.cornerRadius(10)
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray.opacity(0.2),lineWidth: 1))
                 .padding()
             Spacer()
-            
         }
     }
 }

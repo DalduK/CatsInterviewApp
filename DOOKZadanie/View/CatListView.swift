@@ -4,11 +4,11 @@ struct CatListView: View {
     @StateObject private var viewModel = CatListViewModel()
     
     var body: some View {
-        NavigationView{
-            List(viewModel.catsList){ cat in
+        NavigationView {
+            List(viewModel.catsList) { cat in
                 VStack{
                     URLImageView(urlString: cat.url)
-                    .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: .fit)
                         .cornerRadius(5)
                     if cat.name != "" {
                         Text(cat.name)
@@ -27,14 +27,13 @@ struct CatListView: View {
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }.accessibilityIdentifier("refreshButton")
-            }).sheet(item: $viewModel.selectedCat, onDismiss: viewModel.countTime){cat in
+            }).sheet(item: $viewModel.selectedCat, onDismiss: viewModel.countTime) { cat in
                 CatDetailView(name: cat.name, picURL: cat.url, wikipediaURL: cat.wikiUrl, description: cat.description)
             }.navigationTitle("Cats")
             
         }.navigationViewStyle(.stack).alert(isPresented: $viewModel.apiError) {
             Alert(title: Text("App Error occured"), message: Text("There is a problem with internet connection or API is unreachable, please try again later."), dismissButton: .cancel(Text("Got it!")))
         }
-
     }
 }
 

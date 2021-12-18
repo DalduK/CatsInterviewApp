@@ -1,18 +1,11 @@
-//
-//  DOOKZadanieUITests.swift
-//  DOOKZadanieUITests
-//
-//  Created by Przemysław Woźny on 16/12/2021.
-//
-
 import XCTest
 
 class DOOKZadanieUITests: XCTestCase {
     
     override func setUpWithError() throws {
         continueAfterFailure = false
-        
     }
+    
     
     func testIfPageIsRefreshing() throws {
         let app = XCUIApplication()
@@ -25,7 +18,7 @@ class DOOKZadanieUITests: XCTestCase {
         let catImage = firstCell.images["CatImage"]
         //getting height of first image
         let firstH = catImage.frame.height
-
+        
         XCTAssertTrue(catImage.waitForExistence(timeout: 3))
         
         refreshButton.tap()
@@ -38,6 +31,7 @@ class DOOKZadanieUITests: XCTestCase {
         XCTAssertFalse(firstH == secondH)
         
     }
+    
     
     func testIfSheetWorksCorrectly() throws {
         let app = XCUIApplication()

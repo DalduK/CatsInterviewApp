@@ -22,5 +22,4 @@ public class ImageLoaderService: ObservableObject {
         }
         task.resume()
     }
-    
 }

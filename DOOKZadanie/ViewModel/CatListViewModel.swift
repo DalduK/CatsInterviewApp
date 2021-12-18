@@ -17,7 +17,7 @@ final public class CatListViewModel : ObservableObject {
     
     func countTime() {
         self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { _ in
-            if self.timePassed == 0{
+            if self.timePassed == 0 {
                 self.getCatsData()
                 self.timePassed = 20
             }
@@ -26,11 +26,11 @@ final public class CatListViewModel : ObservableObject {
     }
     
     func getCatsData() {
-        getCats(url: apiURL){[weak self] cats in
+        getCats(url: apiURL) { [weak self] cats in
             guard let strongSelf = self else {
                 return
             }
-            if cats.isEmpty{
+            if cats.isEmpty {
                 DispatchQueue.main.async {
                     strongSelf.apiError = true
                     return
@@ -41,9 +41,7 @@ final public class CatListViewModel : ObservableObject {
                 for cat in cats {
                     if cat.breeds.isEmpty {
                         strongSelf.catsList.append(CatInfo(url: cat.url))
-                    }
-                    else {
-                        // Wróciłem do tego brzydkiego sposobu tylko dlatego że w sumie może być opcja że jest imię a nie ma np desc czy wiki url itd. Nie widziałem tego w tym api, ale jest możliwość
+                    } else {
                         strongSelf.catsList.append(CatInfo(url: cat.url, name: cat.breeds[0]?.name ?? "", description: cat.breeds[0]?.description ?? "", wikiUrl: cat.breeds[0]?.wikipedia_url ?? ""))
                     }
                 }

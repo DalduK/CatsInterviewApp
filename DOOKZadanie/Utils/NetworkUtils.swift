@@ -15,7 +15,6 @@ func getCats(url: String, completionHandler: @escaping ([Cat]) -> Void) {
            let catsData = try? JSONDecoder().decode([Cat].self, from: data) {
             completionHandler(catsData)
         }
-        
     })
     task.resume()
 }
