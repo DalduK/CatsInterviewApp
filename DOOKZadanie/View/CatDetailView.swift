@@ -21,7 +21,7 @@ struct CatDetailView: View {
     var body: some View {
         VStack {
             Button("Close") {
-                           self.presentationMode.wrappedValue.dismiss()
+                self.presentationMode.wrappedValue.dismiss()
             }.padding(.top)
             Spacer()
             VStack{
@@ -29,15 +29,17 @@ struct CatDetailView: View {
                     .aspectRatio(contentMode: .fit)
                 HStack{
                     VStack(alignment: .leading){
-                        Text(name)
-                            .font(.title)
-                            .fontWeight(.black)
-                            .lineLimit(1)
+                        if name != "" {
+                            Text(name)
+                                .font(.title)
+                                .fontWeight(.black)
+                                .lineLimit(1)
+                        }
                         Text(description)
                             .font(.body)
                             .foregroundColor(.gray)
-                        if wikipediaURL != "" {
-                            Link(destination: URL(string:wikipediaURL)!, label: {
+                        if let wikipediaURL = URL(string: wikipediaURL) {
+                            Link(destination: wikipediaURL, label: {
                                 Text("Learn more about \(name)")
                                     .padding()
                                     .foregroundColor(.white)
@@ -46,7 +48,7 @@ struct CatDetailView: View {
                                 
                             })
                         }
-                    
+                        
                     }
                 }.padding()
             }.cornerRadius(10)

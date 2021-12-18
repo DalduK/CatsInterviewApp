@@ -41,6 +41,3 @@ struct CatListView_Previews: PreviewProvider {
     }
 }
 
-extension Int: Identifiable {
-    public var id: Int { self }
-}

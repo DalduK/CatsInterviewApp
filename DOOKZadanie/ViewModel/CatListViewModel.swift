@@ -35,14 +35,8 @@ final public class CatListViewModel : ObservableObject {
                         strongSelf.catsList.append(CatInfo(url: cat.url))
                     }
                     else {
-                        if let name = cat.breeds[0]?.name,
-                           let desc = cat.breeds[0]?.description,
-                           let wikiUrl = cat.breeds[0]?.wikipedia_url {
-                            strongSelf.catsList.append(CatInfo(url: cat.url, name: name, description: desc, wikiUrl: wikiUrl))
-                        } else {
-                            //Somtimes there was a problem that there is no wikiURL inside
-                            strongSelf.catsList.append(CatInfo(url: cat.url))
-                        }
+                        // Wróciłem do tego brzydkiego sposobu tylko dlatego że w sumie może być opcja że jest imię a nie ma np desc czy wiki url itd. Nie widziałem tego w tym api, ale jest możliwość
+                        strongSelf.catsList.append(CatInfo(url: cat.url, name: cat.breeds[0]?.name ?? "", description: cat.breeds[0]?.description ?? "", wikiUrl: cat.breeds[0]?.wikipedia_url ?? ""))
                     }
                 }
             }
