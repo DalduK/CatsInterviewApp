@@ -8,11 +8,16 @@ public class ImageLoaderService: ObservableObject {
     func loadImage(urlString: String, completionHandler: @escaping (Bool) -> Void) {
         guard let url = URL(string: urlString) else { return }
         
-        let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else { return }
+            if let error = error {
+                print("Error with fetching pics: \(error)")
+                completionHandler(false)
+                return
+            }
             DispatchQueue.main.async {
                 self.image = UIImage(data: data) ?? UIImage()
-                completionHandler(false)
+                completionHandler(true)
             }
         }
         task.resume()

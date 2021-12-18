@@ -9,25 +9,50 @@ import XCTest
 @testable import DOOKZadanie
 
 class DOOKZadanieTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var viewModel : CatListViewModel!
+    var imageLoader: ImageLoaderService!
+    
+    override func setUp() {
+        super.setUp()
+        viewModel = CatListViewModel()
+        imageLoader = ImageLoaderService()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        super.tearDown()
     }
+    
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_API_Return_With_Good_API_Call() throws {
+        viewModel.apiURL = "https://api.thecatapi.com/v1/images/search?limit=5"
+        viewModel.getCatsData()
+        print(viewModel.catsList)
+        DispatchQueue.main.async {
+            XCTAssertFalse(self.viewModel.catsList.isEmpty)
         }
     }
+    
+    func test_API_Return_With_Bad_API_Call() throws {
+        viewModel.apiURL = ""
+        viewModel.getCatsData()
+        DispatchQueue.main.async {
+            XCTAssertFalse(self.viewModel.catsList.isEmpty)
+        }
+    }
+    
+    func test_ImageLoader_With_Good_Call() throws {
+        imageLoader.loadImage(urlString: "https://cdn2.thecatapi.com/images/32l.jpg", completionHandler: { completed in
+            XCTAssertTrue(completed)
+        })
+    }
+    
+    
+    func test_ImageLoader_With_Bad_Call() throws {
+        imageLoader.loadImage(urlString: "", completionHandler: { completed in
+            XCTAssertFalse(completed)
+        })
+    }
+
+    
 
 }

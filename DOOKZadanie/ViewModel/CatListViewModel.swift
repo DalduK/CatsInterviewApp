@@ -7,6 +7,7 @@ final public class CatListViewModel : ObservableObject {
     @Published var isPresented : Bool = false
     @Published var timer = Timer()
     @Published var apiError : Bool = false
+    var apiURL = "https://api.thecatapi.com/v1/images/search?limit=5"
     var timePassed = 20
     
     init() {
@@ -25,7 +26,7 @@ final public class CatListViewModel : ObservableObject {
     }
     
     func getCatsData() {
-        getCats{[weak self] cats in
+        getCats(url: apiURL){[weak self] cats in
             guard let strongSelf = self else {
                 return
             }
