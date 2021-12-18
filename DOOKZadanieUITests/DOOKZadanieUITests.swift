@@ -13,7 +13,9 @@ class DOOKZadanieUITests: XCTestCase {
         
         let refreshButton = app.buttons["refreshButton"]
         let catList = app.tables["List"]
+        
         XCTAssertTrue(catList.cells.count > 0)
+        
         let firstCell = catList.cells.element(boundBy: 0)
         let catImage = firstCell.images["CatImage"]
         //getting height of first image
@@ -29,7 +31,6 @@ class DOOKZadanieUITests: XCTestCase {
         let secondH = catImage.frame.height
         //comparing to check if they are different
         XCTAssertFalse(firstH == secondH)
-        
     }
     
     
@@ -38,7 +39,9 @@ class DOOKZadanieUITests: XCTestCase {
         app.launch()
         
         let catList = app.tables["List"]
+        
         XCTAssertTrue(catList.cells.count > 0)
+        
         let firstCell = catList.cells.element(boundBy: 0)
         let catImage = firstCell.images["CatImage"]
         let modalImageOrProggress = app.images["ProgressOrImageSheet"]
