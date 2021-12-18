@@ -22,6 +22,7 @@ struct CatListView: View {
                 Button{
                     DispatchQueue.main.async {
                         self.viewModel.getCatsData()
+                        self.viewModel.timePassed = 20
                     }
                 } label: {
                     Image(systemName: "arrow.clockwise")
